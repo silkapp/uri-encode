@@ -1,5 +1,5 @@
 Name:               uri-encode
-Version:            1.3.4.1
+Version:            1.3.4.2
 Description:        Unicode aware uri-encoding.
 Synopsis:           Unicode aware uri-encoding.
 Cabal-version:      >= 1.8
@@ -19,7 +19,7 @@ Library
 
   Build-Depends:    base ==4.*
                   , bytestring >= 0.9 && < 0.11
-                  , network >= 2.2 && < 2.5
+                  , network >= 2.2 && < 2.4
                   , text >=0.7 && < 0.12
                   , utf8-string ==0.3.*
 
@@ -31,7 +31,7 @@ Executable          uri-encode
     Buildable:      True
     Build-Depends:    base ==4.*
                     , bytestring >= 0.9 && < 0.11
-                    , network >= 2.2 && < 2.5
+                    , network >= 2.2 && < 2.4
                     , text >=0.7 && < 0.12
                     , utf8-string ==0.3.*
   else
@@ -45,7 +45,7 @@ Executable          uri-decode
     Buildable:      True
     Build-Depends:    base ==4.*
                     , bytestring >= 0.9 && < 0.11
-                    , network >= 2.2 && < 2.5
+                    , network >= 2.2 && < 2.4
                     , text >=0.7 && < 0.12
                     , utf8-string ==0.3.*
   else
