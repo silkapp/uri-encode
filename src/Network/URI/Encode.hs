@@ -5,7 +5,20 @@ pretty straightforward when encoding URIs: Encode a text to a UTF-8 string and
 URI-encode every individual byte (not character).
 -}
 
-module Network.URI.Encode where
+module Network.URI.Encode
+  ( encode
+  , encodeWith
+  , encodeText
+  , encodeTextWith
+  , encodeByteString
+  , encodeByteStringWith
+
+  , decode
+  , decodeText
+  , decodeByteString
+
+  , isAllowed
+  ) where
 
 import Data.Text
 import Network.URI
