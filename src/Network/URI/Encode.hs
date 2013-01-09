@@ -1,3 +1,4 @@
+{-# LANGUAGE CPP #-}
 {- |
 Unicode aware URI encoding and decoding functions for both String and Text.
 Although standards are pretty vague about Unicode in URIs most browsers are
@@ -35,12 +36,12 @@ encode = encodeWith isAllowed
 -- decide which characters are escaped ('False' means escape).
 
 encodeWith :: (Char -> Bool) -> String -> String
-encodeWith predicate = escapeURIString predicate . U.unpack . U.fromString
+encodeWith predicate = escapeURIString predicate . fixUtf8
 
 -- | URI decode a 'String', unicode aware.
 
 decode :: String -> String
-decode = U.toString . U.pack . unEscapeString
+decode = unfixUtf8 . unEscapeString
 
 -------------------------------------------------------------------------------
 -- | URI encode a 'Text', unicode aware.
@@ -83,3 +84,19 @@ decodeByteString = pack . decode . U.unpack
 isAllowed :: Char -> Bool
 isAllowed c = c `elem` (['A'..'Z'] ++ ['a'..'z'] ++ ['0'..'9'] ++ "-_.!~*'()")
 
+-------------------------------------------------------------------------------
+-- | "Fix" a String before encoding. This actually breaks the string,
+-- by changing unicode characters into their byte pairs. For network
+-- \>= 2.4, this is the identity, since that correctly handles unicode
+-- character.
+fixUtf8   :: String -> String
+-- | "Unfix" a String again.
+unfixUtf8 :: String -> String
+
+#if MIN_VERSION_network(2,4,0)
+fixUtf8   = id
+unfixUtf8 = id
+#else
+fixUtf8   = U.unpack . U.fromString
+unfixUtf8 = U.toString . U.pack
+#endif
