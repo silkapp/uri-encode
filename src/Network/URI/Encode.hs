@@ -95,8 +95,7 @@ unfixUtf8 :: String -> String
 
 #if MIN_VERSION_network(2,4,0)
 fixUtf8   = id
-unfixUtf8 = id
 #else
 fixUtf8   = U.unpack . U.fromString
-unfixUtf8 = U.toString . U.pack
 #endif
+unfixUtf8 = U.toString . U.pack
