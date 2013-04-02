@@ -88,14 +88,21 @@ isAllowed c = c `elem` (['A'..'Z'] ++ ['a'..'z'] ++ ['0'..'9'] ++ "-_.!~*'()")
 -- | "Fix" a String before encoding. This actually breaks the string,
 -- by changing unicode characters into their byte pairs. For network
 -- \>= 2.4, this is the identity, since that correctly handles unicode
--- character.
-fixUtf8   :: String -> String
--- | "Unfix" a String again.
-unfixUtf8 :: String -> String
-
+-- characters.
+fixUtf8 :: String -> String
 #if MIN_VERSION_network(2,4,0)
-fixUtf8   = id
+fixUtf8 = id
 #else
-fixUtf8   = U.unpack . U.fromString
+fixUtf8 = U.unpack . U.fromString
 #endif
+
+-- | "Unfix" a String again. For network \>= 2.4.1.1 this is the
+-- identity, since that correctly handles unicode characters. Note
+-- that network 2.4.1.0 (one that is still broken) cannot be excluded
+-- by CPP, so this version is excluded in the cabal dependencies.
+unfixUtf8 :: String -> String
+#if MIN_VERSION_network(2,4,1)
+unfixUtf8 = id
+#else
 unfixUtf8 = U.toString . U.pack
+#endif
