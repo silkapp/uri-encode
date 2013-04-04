@@ -13,10 +13,13 @@ module Network.URI.Encode
   , encodeTextWith
   , encodeTextToBS
   , encodeTextToBSWith
+  , encodeByteString
+  , encodeByteStringWith
 
   , decode
   , decodeText
   , decodeBSToText
+  , decodeByteString
 
   , isAllowed
   ) where
@@ -76,6 +79,23 @@ encodeTextToBSWith predicate = U.pack . encodeWith predicate . unpack
 
 decodeBSToText :: U.ByteString -> Text
 decodeBSToText = pack . decode . U.unpack
+
+-------------------------------------------------------------------------------
+-- | URI encode a 'Text' into a 'ByteString', unicode aware.
+
+encodeByteString :: U.ByteString -> U.ByteString
+encodeByteString = U.pack . encode . U.toString
+
+-- | URI encode a 'Text' into a 'ByteString', unicode aware, using the
+-- predicate to decide which characters are escaped ('False' means escape).
+
+encodeByteStringWith :: (Char -> Bool) -> U.ByteString -> U.ByteString
+encodeByteStringWith predicate = U.pack . encodeWith predicate . U.unpack
+
+-- | URI decode a 'ByteString' into a 'Text', unicode aware.
+
+decodeByteString :: U.ByteString -> U.ByteString
+decodeByteString = U.fromString . decode . U.unpack
 
 -------------------------------------------------------------------------------
 -- | Is a character allowed in a URI. Only ASCII alphabetic
