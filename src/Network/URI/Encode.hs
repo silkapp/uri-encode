@@ -81,18 +81,19 @@ decodeBSToText :: U.ByteString -> Text
 decodeBSToText = pack . decode . U.unpack
 
 -------------------------------------------------------------------------------
--- | URI encode a 'Text' into a 'ByteString', unicode aware.
+-- | URI encode a UTF8-encoded 'ByteString' into a 'ByteString', unicode aware.
 
 encodeByteString :: U.ByteString -> U.ByteString
 encodeByteString = U.pack . encode . U.toString
 
--- | URI encode a 'Text' into a 'ByteString', unicode aware, using the
--- predicate to decide which characters are escaped ('False' means escape).
+-- | URI encode a UTF8-encoded 'ByteString into a 'ByteString', unicode aware,
+-- using the predicate to decide which characters are escaped ('False' means
+-- escape).
 
 encodeByteStringWith :: (Char -> Bool) -> U.ByteString -> U.ByteString
 encodeByteStringWith predicate = U.pack . encodeWith predicate . U.unpack
 
--- | URI decode a 'ByteString' into a 'Text', unicode aware.
+-- | URI decode a 'ByteString' into a UTF8-encoded 'ByteString', unicode aware.
 
 decodeByteString :: U.ByteString -> U.ByteString
 decodeByteString = U.fromString . decode . U.unpack
