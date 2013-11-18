@@ -5,7 +5,7 @@ Synopsis:           Unicode aware uri-encoding.
 Cabal-version:      >= 1.8
 Category:           Network, Web
 Author:             Sebastiaan Visser
-Maintainer:         code@typlab.com
+Maintainer:         code@silk.co
 License:            OtherLicense
 License-File:       LICENSE
 Build-Type:         Simple
