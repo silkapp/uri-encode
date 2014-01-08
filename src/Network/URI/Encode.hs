@@ -100,10 +100,12 @@ decodeByteString = U.fromString . decode . U.unpack
 
 -------------------------------------------------------------------------------
 -- | Is a character allowed in a URI. Only ASCII alphabetic
--- characters, decimal digits, and - _ . ! ~ * ' ( ) are allowed.
+-- characters, decimal digits, and - _ . ~ are allowed. This is
+-- following RFC 3986. Previously we were more liberal, but we ran
+-- into a problem with that with SendGrid, so better safe than pretty.
 
 isAllowed :: Char -> Bool
-isAllowed c = c `elem` (['A'..'Z'] ++ ['a'..'z'] ++ ['0'..'9'] ++ "-_.!~*'()")
+isAllowed c = c `elem` (['A'..'Z'] ++ ['a'..'z'] ++ ['0'..'9'] ++ "-_.~")
 
 -------------------------------------------------------------------------------
 -- | "Fix" a String before encoding. This actually breaks the string,
