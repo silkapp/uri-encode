@@ -20,7 +20,7 @@ Library
   Build-Depends:    base ==4.*
                   , bytestring >= 0.9 && < 0.11
                   , network (>= 2.2 && < 2.4.1.0) || (> 2.4.1.0 && < 2.5)
-                  , text >=0.7 && < 0.12
+                  , text >=0.7 && < 1.2
                   , utf8-string ==0.3.*
 
   Exposed-Modules: Network.URI.Encode
@@ -32,7 +32,7 @@ Executable          uri-encode
     Build-Depends:    base ==4.*
                     , bytestring >= 0.9 && < 0.11
                     , network (>= 2.2 && < 2.4.1.0) || (> 2.4.1.0 && < 2.5)
-                    , text >=0.7 && < 0.12
+                    , text >=0.7 && < 1.2
                     , utf8-string ==0.3.*
   else
     Buildable:      False
@@ -46,7 +46,7 @@ Executable          uri-decode
     Build-Depends:    base ==4.*
                     , bytestring >= 0.9 && < 0.11
                     , network (>= 2.2 && < 2.4.1.0) || (> 2.4.1.0 && < 2.5)
-                    , text >=0.7 && < 0.12
+                    , text >=0.7 && < 1.2
                     , utf8-string ==0.3.*
   else
     Buildable:      False
