@@ -4,11 +4,12 @@ Description:        Unicode aware uri-encoding.
 Synopsis:           Unicode aware uri-encoding.
 Cabal-version:      >= 1.8
 Category:           Network, Web
-Author:             Sebastiaan Visser
+Author:             Silk
 Maintainer:         code@silk.co
 License:            OtherLicense
 License-File:       LICENSE
 Build-Type:         Simple
+Extra-Source-Files: README.md
 
 Flag tools
   Default: False
