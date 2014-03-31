@@ -55,3 +55,6 @@ Executable          uri-decode
   GHC-Options:      -Wall
   HS-Source-Dirs:   src
 
+Source-Repository head
+  Type:             Git
+  Location:         https://github.com/silkapp/uri-encode.git
