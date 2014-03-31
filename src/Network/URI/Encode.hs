@@ -101,8 +101,7 @@ decodeByteString = U.fromString . decode . U.unpack
 -------------------------------------------------------------------------------
 -- | Is a character allowed in a URI. Only ASCII alphabetic
 -- characters, decimal digits, and - _ . ~ are allowed. This is
--- following RFC 3986. Previously we were more liberal, but we ran
--- into a problem with that with SendGrid, so better safe than pretty.
+-- following RFC 3986.
 
 isAllowed :: Char -> Bool
 isAllowed c = c `elem` (['A'..'Z'] ++ ['a'..'z'] ++ ['0'..'9'] ++ "-_.~")
