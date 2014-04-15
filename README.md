@@ -1,3 +1,6 @@
+# uri-encode
+[![Build Status](https://travis-ci.org/silkapp/uri-encode.svg?branch=master)](https://travis-ci.org/silkapp/uri-encode)
+
 This package allows you to uri encode and uri decode `String`s,
 `Text`s and `ByteString`s.
 
