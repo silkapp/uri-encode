@@ -112,10 +112,14 @@ isAllowed c = c `elem` (['A'..'Z'] ++ ['a'..'z'] ++ ['0'..'9'] ++ "-_.~")
 -- \>= 2.4, this is the identity, since that correctly handles unicode
 -- characters.
 fixUtf8 :: String -> String
+#ifdef MIN_VERSION_network
 #if MIN_VERSION_network(2,4,0)
 fixUtf8 = id
 #else
 fixUtf8 = U.unpack . U.fromString
+#endif
+#else
+fixUtf8 = id
 #endif
 
 -- | "Unfix" a String again. For network \>= 2.4.1.1 this is the
@@ -123,8 +127,12 @@ fixUtf8 = U.unpack . U.fromString
 -- that network 2.4.1.0 (one that is still broken) cannot be excluded
 -- by CPP, so this version is excluded in the cabal dependencies.
 unfixUtf8 :: String -> String
+#ifdef MIN_VERSION_network
 #if MIN_VERSION_network(2,4,1)
 unfixUtf8 = id
 #else
 unfixUtf8 = U.toString . U.pack
+#endif
+#else
+unfixUtf8 = id
 #endif

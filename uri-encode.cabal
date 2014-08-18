@@ -17,6 +17,10 @@ extra-source-files:
 flag tools
   default: False
 
+flag network-uri
+  description: Get Network.URI from the network-uri package
+  default: True
+
 source-repository head
   type:              git
   location:          https://github.com/silkapp/uri-encode.git
@@ -28,9 +32,12 @@ library
   build-depends:
       base == 4.*
     , bytestring >= 0.9 && < 0.11
-    , network (>= 2.2 && < 2.4.1.0) || (> 2.4.1.0 && < 2.6)
     , text >=0.7 && < 1.2
     , utf8-string ==0.3.*
+  if flag(network-uri)
+    build-depends: network-uri >= 2.6
+  else
+    build-depends: network (>= 2.2 && < 2.4.1.0) || (> 2.4.1.0 && < 2.6)
 
 executable uri-encode
   main-is:           URIEncode.hs
@@ -41,9 +48,12 @@ executable uri-encode
     build-depends:
         base == 4.*
       , bytestring >= 0.9 && < 0.11
-      , network (>= 2.2 && < 2.4.1.0) || (> 2.4.1.0 && < 2.6)
       , text >= 0.7 && < 1.2
       , utf8-string == 0.3.*
+    if flag(network-uri)
+      build-depends: network-uri >= 2.6
+    else
+      build-depends: network (>= 2.2 && < 2.4.1.0) || (> 2.4.1.0 && < 2.6)
   else
     buildable:      False
 
@@ -56,8 +66,11 @@ executable uri-decode
     build-depends:
         base == 4.*
       , bytestring >= 0.9 && < 0.11
-      , network (>= 2.2 && < 2.4.1.0) || (> 2.4.1.0 && < 2.6)
       , text >= 0.7 && < 1.2
       , utf8-string == 0.3.*
+    if flag(network-uri)
+      build-depends: network-uri >= 2.6
+    else
+      build-depends: network (>= 2.2 && < 2.4.1.0) || (> 2.4.1.0 && < 2.6)
   else
     buildable:       False
