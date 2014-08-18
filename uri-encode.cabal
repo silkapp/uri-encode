@@ -1,5 +1,5 @@
 name:                uri-encode
-version:             1.5.0.2
+version:             1.5.0.3
 description:         Unicode aware uri-encoding.
 synopsis:            Unicode aware uri-encoding.
 cabal-version:       >= 1.8
@@ -11,6 +11,7 @@ license-file:        LICENSE
 build-type:          Simple
 
 extra-source-files:
+  CHANGELOG.md
   LICENSE
   README.md
 
