@@ -15,11 +15,13 @@ extra-source-files:
   README.md
 
 flag tools
-  default: False
+  description:       Build executables
+  default:           False
+  manual:            True
 
 flag network-uri
-  description: Get Network.URI from the network-uri package
-  default: True
+  description:       Get Network.URI from the network-uri package
+  default:           True
 
 source-repository head
   type:              git
