@@ -6,7 +6,7 @@ cabal-version:       >= 1.8
 category:            Network, Web
 author:              Silk
 maintainer:          code@silk.co
-license:             OtherLicense
+license:             BSD3
 license-file:        LICENSE
 build-type:          Simple
 
