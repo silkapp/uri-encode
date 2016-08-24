@@ -1,3 +1,7 @@
+#### 1.5.0.5
+
+* Add license field in cabal file
+
 #### 1.5.0.4
 
 * Allow utf8-string 1.
