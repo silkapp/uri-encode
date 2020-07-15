@@ -104,7 +104,7 @@ decodeByteString = U.fromString . decode . U.unpack
 -- following RFC 3986.
 
 isAllowed :: Char -> Bool
-isAllowed c = c `elem` (['A'..'Z'] ++ ['a'..'z'] ++ ['0'..'9'] ++ "-_.~")
+isAllowed = isUnreserved
 
 -------------------------------------------------------------------------------
 -- | "Fix" a String before encoding. This actually breaks the string,
