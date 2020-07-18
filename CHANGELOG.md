@@ -1,3 +1,7 @@
+#### 1.5.0.6
+
+* Improve performance, thanks to David Farrell
+
 #### 1.5.0.5
 
 * Add license field in cabal file
