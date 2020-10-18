@@ -1,5 +1,5 @@
 name:                uri-encode
-version:             1.5.0.6
+version:             1.5.0.7
 synopsis:            Unicode aware uri-encoding
 description:         This package allows you to uri encode and uri decode
                      Strings, Texts and ByteString values.
