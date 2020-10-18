@@ -1,8 +1,9 @@
 name:                uri-encode
 version:             1.5.0.6
-description:         Unicode aware uri-encoding.
-synopsis:            Unicode aware uri-encoding.
-cabal-version:       >= 1.10
+synopsis:            Unicode aware uri-encoding
+description:         This package allows you to uri encode and uri decode
+                     Strings, Texts and ByteString values.
+cabal-version:       1.18
 category:            Network, Web
 author:              Silk
 maintainer:          code@silk.co
@@ -10,7 +11,7 @@ license:             BSD3
 license-file:        LICENSE
 build-type:          Simple
 
-extra-source-files:
+extra-doc-files:
   CHANGELOG.md
   LICENSE
   README.md
